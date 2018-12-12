@@ -9,5 +9,10 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 @decorator_from_middleware(AutenticacionMiddleware)
-def gestion_personal(request):
-    return render(request, 'gestion_personal.html')
+def gestion_inicio(request):
+    return render(request, 'gestion/inicio.html')
+
+@decorator_from_middleware(AutenticacionMiddleware)
+def gestion_operador(request):
+    return render(request, 'gestion/operador.html')
+

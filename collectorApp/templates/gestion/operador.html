@@ -1,13 +1,79 @@
 {% extends 'layout.html'%}
+{% load static %}
 {% block titulo %}Gestión de operadores{% endblock %}
 {% block contenido %}
 
-<section>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-           
+<section ng-controller="OperadorController" ng-init="Iniciar()">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <b class="panel-title">Operadores
+                <span class="badge" ng-bind="ListaOperador.length"></span>
+            </b>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nombre de usuario</th>
+                        <th class="text-center col-xs-3">
+                            <button class="btn btn-xs btn-success" ng-click="CrearOperador()">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="Operador in ListaOperador">
+                    <tr>
+                        <td><span ng-bind="Operador.nombre_operador"></span></td>
+                        <td><span ng-bind="Operador.usuario"></span></td>
+                        <td class="text-center col-xs-3">
+                            <button class="btn btn-xs btn-warning" ng-click="ModificarOperador(Operador)">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button class="btn btn-xs btn-danger" ng-click="EliminarOperador(Operador)">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="app-modal-operador">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">Ingrese la información requerida</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+                                    <div class="form-group">
+                                        <label>Nombre:</label>
+                                        <input type="text" class="form-control" ng-model="Operador.Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-default" ng-click="CancelarOperador()">Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-click="GuardarOperador()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+{% endblock %}
 
+{% block scripts %}
+<script src="{% static 'js/app/factories/operador-factory.js' %}"></script>
+<script src="{% static 'js/app/controllers/operador-controller.js' %}"></script>
 {% endblock %}
