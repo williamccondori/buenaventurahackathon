@@ -1,0 +1,16 @@
+{
+  "name": "Bigteam",
+  "scripts": {
+    "postdeploy": "python manage.py migrate --noinput"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
