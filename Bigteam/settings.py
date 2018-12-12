@@ -34,14 +34,15 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'collectorApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'collectorApp',
-    'rest_framework',
+    'rest_framework',  
+    'storages',
 ]
 
 MIDDLEWARE = [
