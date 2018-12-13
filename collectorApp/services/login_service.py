@@ -12,6 +12,7 @@ class LoginService(object):
 
         usuario_dto = UsuarioDto(
             id=usuario.id,
+            nombre=usuario.nombre_operador,
             usuario=usuario.usuario
         )
         return usuario_dto

@@ -35,7 +35,7 @@
         };
 
         servicio.Eliminar = function (ruta, modelo) {
-            return $resource(ruta, {}, {
+            return $resource(ruta + modelo.id + '/', {}, {
                 Delete: {
                     method: 'DELETE',
                     isArray: false,
@@ -44,7 +44,7 @@
                         "Content-Type": "application/json"
                     }
                 }
-            }).Delete(modelo).$promise;
+            }).Delete().$promise;
         };
 
         return servicio;

@@ -1,8 +1,9 @@
 from django.db import models
 from datetime import date,datetime
 # Create your models here.
+
 class operador(models.Model):
-    nombre_operador = models.CharField(max_length=12,null=False)
+    nombre_operador = models.CharField(max_length=100,null=False)
     usuario = models.CharField(max_length=12,null=False)
     password = models.CharField(max_length=12,null=False)
     tipo_operador = models.IntegerField(null=False)

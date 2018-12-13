@@ -1,5 +1,5 @@
 class UsuarioDto(object):
-    def __init__(self, id=0, usuario='', password=''):
+    def __init__(self, id=0, usuario='', nombre=''):
         self.Id = id
         self.Usuario = usuario
-        self.Password = password
+        self.Nombre = nombre

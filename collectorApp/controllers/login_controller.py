@@ -20,7 +20,9 @@ class LoginController(View):
             usuario = request.POST.get('usuario', None)
             password = request.POST.get('password', None)
             usuario_dto = login_service.validar(usuario, password)
+            request.session["id"] = usuario_dto.Id
             request.session["usuario"] = usuario_dto.Usuario
+            request.session["nombre"] = usuario_dto.Nombre
             return redirect('/')
         except Exception as e:
             return render(request, self.template_name, {'message': e})

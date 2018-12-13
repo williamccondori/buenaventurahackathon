@@ -20,7 +20,6 @@ class ActividadViewset(viewsets.ModelViewSet):
     queryset = models.actividad.objects.all()
     serializer_class = serializers.Actividadserializer
 
-
 class Detalle_actividadViewset(viewsets.ModelViewSet):
     queryset = models.detalle_actividad.objects.all()
     serializer_class = serializers.Detalle_actividadserializer

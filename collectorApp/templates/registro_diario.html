@@ -1,0 +1,64 @@
+{% extends 'layout.html'%}
+
+{% load static %}
+{% block titulo %}Título{% endblock %}
+{% block contenido %}
+
+<section ng-controller="RegistroDiarioController" ng-init="Iniciar()">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="app-titulo-pagina">Registro diario de actividad</h3>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{% url 'dashboard' %}">Inicio</a>
+                </li>
+                <li class="active">Registro diario de actividad</li>
+            </ol>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button type="button" class="btn btn-primary">Agregar actividad</button>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <b class="panel-title">Actividades en progreso
+                                <span class="badge" ng-bind="ListaActividad.length"></span>
+                            </b>
+                        </div>
+                        <div class="list-group" ng-repeat="Actividad in ListaActividad">
+                            <a class="list-group-item">
+                                <h4 class="list-group-item-heading">Fecha de la actividad: <span ng-bind="Actividad.fecha_actividad"></span></h4>
+                                <p class="list-group-item-text">
+                                    <small><b>Operador: </b><span ng-bind="Actividad.id_operador"></span></small><br>
+                                    <small><b>Nivel: </b><span ng-bind="Actividad.nivel"></span></small>
+                                </p>
+                            </a>
+                        </div>
+                    </div><hr>
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <b class="panel-title">Histórico de actividades
+                                <span class="badge" ng-bind="ListaActividadHistorica.length"></span>
+                            </b>
+                        </div>
+                        <div class="list-group" ng-repeat="Actividad in ListaActividadHistorica">
+                            <a class="list-group-item">
+                                <h4 class="list-group-item-heading">Fecha de la actividad: <span ng-bind="Actividad.fecha_actividad"></span></h4>
+                                <p class="list-group-item-text">
+                                    <small><b>Operador: </b><span ng-bind="Actividad.id_operador"></span></small><br>
+                                    <small><b>Nivel: </b><span ng-bind="Actividad.nivel"></span></small>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/app/factories/actividad-factory.js' %}"></script>
+<script src="{% static 'js/app/controllers/registro-diario-controller.js' %}"></script>
+{% endblock %}

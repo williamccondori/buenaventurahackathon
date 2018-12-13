@@ -37,11 +37,8 @@
 
         $scope.GuardarOperador = function () {
             OperadorFactory.GuardarOperador($scope.Operador).then(function (response) {
-                if (response.Estado) {
-                    toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
-                    $scope.ObtenerOperador();
-                } else
-                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+                toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
+                $scope.ObtenerOperador();
             });
             Bootstrap.CerrarModal('#app-modal-operador');
         };
@@ -49,11 +46,8 @@
         $scope.EliminarOperador = function (modelo) {
             $scope.Operador = modelo;
             OperadorFactory.EliminarOperador($scope.Operador).then(function (response) {
-                if (response.Estado) {
-                    toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
-                    $scope.ObtenerOperador();
-                } else
-                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+                toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
+                $scope.ObtenerOperador();
             });
         }
 

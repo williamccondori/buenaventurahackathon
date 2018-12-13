@@ -17,4 +17,8 @@
 .modal-body {
   padding: 10px;
 }
+
+.modal-body .panel {
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=style.css.map */

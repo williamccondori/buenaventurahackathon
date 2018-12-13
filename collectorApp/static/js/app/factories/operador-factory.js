@@ -4,14 +4,15 @@
     ];
     function OperadorFactory(BaseFactory) {
         var operador = [];
+        var url = '/api/Operador/';
         operador.ObtenerOperador = function () {
-            return BaseFactory.Obtener('/api/Operador/');
+            return BaseFactory.Obtener(url);
         };
         operador.GuardarOperador = function (modelo) {
-            return BaseFactory.Guardar('/api/Operador/', modelo);
+            return BaseFactory.Guardar(url, modelo);
         };
         operador.EliminarOperador = function (modelo) {
-            return BaseFactory.Eliminar('/api/Operador/', modelo);
+            return BaseFactory.Eliminar(url, modelo);
         };
         return operador;
     }
