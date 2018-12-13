@@ -54,7 +54,7 @@ $(document).ready(function() {
   }, 3000);
 });
 function cache_clear() {
-  extraer();
+  updateData();
   //window.location.reload(true);
   // window.location.reload(); use this if you do not remove cache
 }
@@ -93,7 +93,7 @@ var svg = d3.select("#graficouno").append("svg")
 
 
 // load the data
-var extraer = d3.json("/api/Detalle_actividad/", function(error, data) {
+d3.json("/api/Detalle_actividad/", function(error, data) {
 
     data.forEach(function(d) {
         d.hora_inicio = d.hora_inicio;
@@ -137,6 +137,54 @@ var extraer = d3.json("/api/Detalle_actividad/", function(error, data) {
       .attr("height", function(d) { return height - y(d.longitud_s); });
 
 });
+
+
+function updateData() {
+  d3.json("/api/Detalle_actividad/", function(error, data) {
+
+data.forEach(function(d) {
+    d.hora_inicio = d.hora_inicio;
+    d.longitud_s = +d.longitud_s;
+});
+
+// scale the range of the data
+x.domain(data.map(function(d) { return convertirFechaNumeros(d.hora_inicio, d.hora_fin); }));
+y.domain([0, d3.max(data, function(d) { return d.longitud_s; })]);
+
+// add axis
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis)
+.selectAll("text")
+  .style("text-anchor", "end")
+  .attr("dx", "-.8em")
+  .attr("dy", "-.55em")
+  .attr("transform", "rotate(-90)" );
+
+svg.append("g")
+  .attr("class", "y axis")
+  .call(yAxis)
+.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 5)
+  .attr("dy", ".71em")
+  .style("text-anchor", "end")
+  .text("metros_perforados");
+
+
+// Add bar chart
+svg.selectAll("bar")
+  .data(data)
+.enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d) { return x(convertirFechaNumeros(d.hora_inicio, d.hora_fin)); })
+  .attr("width", x.rangeBand())
+  .attr("y", function(d) { return y(d.longitud_s); })
+  .attr("height", function(d) { return height - y(d.longitud_s); });
+
+});
+}
 
 </script>
 
