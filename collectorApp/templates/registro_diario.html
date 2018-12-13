@@ -153,12 +153,148 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label>Descripcion:</label>
                                         <input type="text" class="form-control" ng-model="DetalleActividad.actividad">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Operacion:</label>
+                                        <div class="row">
+                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                <input type="text" class="form-control" ng-model="DetalleActividad.codigo_operacion">
+                                            </div>
+                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                <input type="text" class="form-control" ng-model="DetalleActividad.descripcion_operacion">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Lugar de origen:</label>
+                                        <select class="form-control" ng-model="DetalleActividad.labor_origen">
+                                            <option value="">[Seleccione]</option>
+                                            <option value="CAMARA">CAMARA</option>
+                                            <option value="SALA DE CAPACITACIÓN ISEM">SALA DE CAPACITACIÓN ISEM</option>
+                                            <option value="VNT. 950">VNT. 950</option>
+                                            <option value="VNT. 044">VNT. 044</option>
+                                            <option value="TJ MIRTHA 11">TJ MIRTHA 11</option>
+                                            <option value="VNT. 170">VNT. 170</option>
+                                            <option value="SALA REPARTO">SALA REPARTO</option>
+                                            <option value="TALLER MINA">TALLER MINA</option>
+                                            <option value="VTN. 134">VTN. 134</option>
+                                            <option value="NV. 4640 TALLER">NV. 4640 TALLER</option>
+                                            <option value="CH. 113">CH. 113</option>
+                                            <option value="SALA REPARTO">SALA REPARTO</option>
+                                            <option value="YERVATEROS">YERVATEROS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Lugar de destino:</label>
+                                        <select class="form-control" ng-model="DetalleActividad.labor_destino">
+                                            <option value="">[Seleccione]</option>
+                                            <option value="VNT.044">VNT.044</option>
+                                            <option value="CAMARA 4640">CAMARA 4640</option>
+                                            <option value="TJ. 300">TJ. 300</option>
+                                            <option value="CAMARA ACUMULACION">CAMARA ACUMULACION</option>
+                                            <option value="VOLQUETES">VOLQUETES</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>Observaciones:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.observaciones">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Tipo de material:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.tipo_material">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Labor:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.labor_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Proyecto:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.proyecto_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Número de filas:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.fila_s">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Número de taladros:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.num_taladro_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Número de barras:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.num_barras_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label><b>Logitud:</b></label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.longitud_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Inclinación:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.inclinacion_s">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Diesel (Inicial):</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.hr_diesel_inicial">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Diesel (Final):</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.hr_diesel_final">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Electricidad (Inicial):</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.hr_electricidad_inicial_s">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Electricidad (Final):</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.hr_electricidad_final_s">
                                     </div>
                                 </div>
                             </div>
@@ -177,6 +313,14 @@
 </section>
 
 {% endblock %}
+
+
+
+
+
+
+
+
 
 {% block scripts %}
 <script src="{% static 'js/app/factories/turno-factory.js' %}"></script>

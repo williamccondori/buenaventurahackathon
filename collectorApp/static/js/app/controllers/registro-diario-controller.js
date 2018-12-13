@@ -24,6 +24,7 @@
             $scope.DetalleActividad = {
                 Id: 0,
                 id_actividad: id_actividad,
+                num_broca_s: 0,
                 Estado: EstadoObjeto.SinCambios
             };
         }
@@ -64,6 +65,14 @@
                 $scope.ObtenerActividad();
             });
             Bootstrap.CerrarModal('#app-modal-actividad');
+        };
+
+        $scope.GuardarDetalleActividad = function () {
+            DetalleActividadFactory.GuardarDetalleActividad($scope.DetalleActividad).then(function (response) {
+                toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
+                $scope.ObtenerActividad();
+            });
+            Bootstrap.CerrarModal('#app-modal-detalle-actividad');
         };
 
         $scope.ObtenerActividad = function () {
