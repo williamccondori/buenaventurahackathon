@@ -54,7 +54,8 @@ $(document).ready(function() {
   }, 3000);
 });
 function cache_clear() {
-  window.location.reload(true);
+  extraer();
+  //window.location.reload(true);
   // window.location.reload(); use this if you do not remove cache
 }
 
@@ -92,7 +93,7 @@ var svg = d3.select("#graficouno").append("svg")
 
 
 // load the data
-d3.json("/api/Detalle_actividad/", function(error, data) {
+var extraer = d3.json("/api/Detalle_actividad/", function(error, data) {
 
     data.forEach(function(d) {
         d.hora_inicio = d.hora_inicio;
