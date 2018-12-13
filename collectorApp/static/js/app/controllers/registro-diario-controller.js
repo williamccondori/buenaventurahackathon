@@ -5,6 +5,8 @@
     function RegistroDiarioController($scope, toastr, ActividadFactory) {
 
         $scope.ListaActividad = [];
+        $scope.ListaEquipo = [];
+        $scope.ListaTurno = [];
         $scope.ListaActividadHistorica = [];
 
         $scope.ResetActividad = function () {
@@ -53,6 +55,21 @@
             });
         };
 
+        $scope.ObtenerEquipo = function () {
+            EquipoFactory.ObtenerEquipo().then(function (response) {
+                $scope.ListaEquipo = response;
+            }).catch(function (error) {
+                toastr.error(MensajeRespuesta.Error, Mensaje.Error.Titulo);
+            });
+        };
+
+        $scope.ObtenerTurno = function () {
+            TurnoFactory.ObtenerTurno().then(function (response) {
+                $scope.ListaTurno = response;
+            }).catch(function (error) {
+                toastr.error(MensajeRespuesta.Error, Mensaje.Error.Titulo);
+            });
+        };
     }
 
     module.controller('RegistroDiarioController', RegistroDiarioController);

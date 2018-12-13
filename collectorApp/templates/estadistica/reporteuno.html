@@ -1,6 +1,27 @@
 {% extends 'layout.html'%}
 {% block titulo %}Título{% endblock %}
 {% block contenido %}
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+          
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <b class="panel-title">Metros perforados</b>
+              </div>
+              <div class="panel-body">
+                <div id="graficouno"></div>
+              </div>
+          </div>
+          
+        </div>
+    </div>
+</section>
+
+
+
+
   <style>
 
   .bar{
@@ -48,8 +69,8 @@ var yAxis = d3.svg.axis()
     .ticks(10);
 
 
-// add the SVG element
-var svg = d3.select("body").append("svg")
+
+var svg = d3.select("#graficouno").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
