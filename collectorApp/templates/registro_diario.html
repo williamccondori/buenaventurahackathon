@@ -16,7 +16,7 @@
             </ol>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <button type="button" class="btn btn-primary"  ng-click="CrearActividad()">Agregar actividad</button>
+                    <button type="button" class="btn btn-primary" ng-click="CrearActividad()">Agregar actividad</button>
                     <hr>
                     <div class="panel panel-success">
                         <div class="panel-heading">
@@ -27,12 +27,40 @@
                         <div class="list-group" ng-repeat="Actividad in ListaActividad">
                             <a class="list-group-item">
                                 <h4 class="list-group-item-heading">Fecha de la actividad: <span ng-bind="Actividad.fecha_actividad"></span></h4>
-                                <p class="list-group-item-text">
-                                    <small><b>Operador: </b><span ng-bind="Actividad.id_operador"></span></small><br>
-                                    <small><b>Nivel: </b><span ng-bind="Actividad.nivel"></span></small>
-                                </p>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <p class="list-group-item-text">
+                                            <small><b>Operador: </b><span ng-bind="Actividad.id_operador"></span></small><br>
+                                            <small><b>Nivel: </b><span ng-bind="Actividad.nivel"></span></small>
+                                        </p>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <button type="button" class="btn btn-info" ng-click="CrearDetalleActividad(Actividad.id)">Ajustar
+                                            detalles</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="table-responsive">
+                                    <table class="table table-condensed table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha de actividad</th>
+                                                <th>Descripcion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="DetalleActividad in Actividad.DetallesActividad">
+                                            <tr>
+                                                <td><span ng-bind="Actividad.fecha_actividad"></span></td>
+                                                <td><span ng-bind="DetalleActividad.actividad"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </a>
                         </div>
+
                     </div>
                     <hr>
                     <div class="panel panel-danger">
@@ -74,7 +102,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Turno:</label>
-                                        <select class="form-control" ng-model="Actividad.id_turno" ng-options="elemento.id as elemento.nombre for elemento in ListaTurno">
+                                        <select class="form-control" ng-model="Actividad.id_turno" ng-options="elemento.id as elemento.descripcion_turno for elemento in ListaTurno">
                                             <option value="">[Seleccione]</option>
                                         </select>
                                     </div>
@@ -86,14 +114,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Equipo:</label>
-                                        <select class="form-control" ng-model="Actividad.id_equipo" ng-options="elemento.id as elemento.nombre for elemento in ListaEquipo">
+                                        <select class="form-control" ng-model="Actividad.id_equipo" ng-options="elemento.id as elemento.nombre_equipo + ' [' +  elemento.modelo + ']'  for elemento in ListaEquipo">
                                             <option value="">[Seleccione]</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Fecha de la actividad:</label>
-                                        <input type="date" class="form-control" ng-model="Actividad.fecha_actividad">
+                                        <input type="date" class="form-control" ng-model="Actividad.fecha">
                                     </div>
                                     <div class="form-group">
                                         <label>Nivel:</label>
@@ -113,6 +141,39 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="app-modal-detalle-actividad">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">Registre del detalle de la actividad</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Descripcion:</label>
+                                        <input type="text" class="form-control" ng-model="DetalleActividad.actividad">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-default" ng-click="CancelarDetalleActividad()">Cancelar</button>
+                                <button type="button" class="btn btn-success" ng-click="GuardarDetalleActividad()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
@@ -120,6 +181,8 @@
 {% block scripts %}
 <script src="{% static 'js/app/factories/turno-factory.js' %}"></script>
 <script src="{% static 'js/app/factories/equipo-factory.js' %}"></script>
+<script src="{% static 'js/app/factories/operador-factory.js' %}"></script>
+<script src="{% static 'js/app/factories/detalle-actividad-factory.js' %}"></script>
 <script src="{% static 'js/app/factories/actividad-factory.js' %}"></script>
 <script src="{% static 'js/app/controllers/registro-diario-controller.js' %}"></script>
 {% endblock %}
