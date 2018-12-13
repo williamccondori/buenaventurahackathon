@@ -16,3 +16,14 @@ def gestion_inicio(request):
 def gestion_operador(request):
     return render(request, 'gestion/operador.html')
 
+@decorator_from_middleware(AutenticacionMiddleware)
+def estadistica_inicio(request):
+    return render(request, 'estadistica/inicio.html')
+
+@decorator_from_middleware(AutenticacionMiddleware)
+def estadistica_reporteuno(request):
+    return render(request, 'estadistica/reporteuno.html')
+
+@decorator_from_middleware(AutenticacionMiddleware)
+def estadistica_reportedos(request):
+    return render(request, 'estadistica/reportedos.html')

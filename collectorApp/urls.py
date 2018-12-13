@@ -7,4 +7,9 @@ urlpatterns = [
     path('login', LoginController.as_view(), name='login'),
     path('gestion', views.gestion_inicio, name='gestion_inicio'),
     path('gestion/operador', views.gestion_operador, name='gestion_operador'),
+
+
+    path('estadistica', views.estadistica_inicio, name='estadistica_inicio'),
+    path('estadistica/reporteuno', views.estadistica_reporteuno, name='estadistica_reporteuno'),
+    path('estadistica/reportedos', views.estadistica_reportedos, name='estadistica_reportedos'),
 ]

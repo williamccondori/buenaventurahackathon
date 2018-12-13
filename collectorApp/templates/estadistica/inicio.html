@@ -1,0 +1,27 @@
+{% extends 'layout.html'%}
+{% block titulo %}Estadísticas{% endblock %}
+{% block contenido %}
+
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="app-titulo-pagina">Estadísticas</h3>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{% url 'dashboard' %}">Inicio</a>
+                </li>
+                <li class="active">Estadísticas</li>
+            </ol>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="list-group">
+                        <a href="{% url 'estadistica_reporteuno' %}" class="list-group-item">Reporte 01</a>
+                        <a href="{% url 'estadistica_reportedos' %}" class="list-group-item">Reporte 02</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
