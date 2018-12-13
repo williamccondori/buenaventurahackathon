@@ -32,21 +32,34 @@
     fill: brown;
   }
 
-	.axis {
-	  font: 10px sans-serif;
-	}
+  .axis {
+    font: 10px sans-serif;
+  }
 
-	.axis path,
-	.axis line {
-	  fill: none;
-	  stroke: #000;
-	  shape-rendering: crispEdges;
-	}
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
     </style>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-
+<script src="https://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
 <script>
 // set the dimensions of the canvas
+//reload.location(3);
+$(document).ready(function() {
+  setInterval(function() {
+    cache_clear()
+  }, 3000);
+});
+function cache_clear() {
+  window.location.reload(true);
+  // window.location.reload(); use this if you do not remove cache
+}
+
+
+
 var margin = {top: 20, right: 20, bottom: 70, left: 90},
     width = 800 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -128,24 +141,24 @@ d3.json("/api/Detalle_actividad/", function(error, data) {
 
 <script>
 function convertirFechaNumeros(fechainicio, fechafin){
-	var resultado ="";
-	var date = new Date(fechainicio);
-	var minute = date.getMinutes();
-	var hour = date.getHours();
-	var day = date.getDate();
-	var month = date.getMonth();
-	var year = date.getFullYear();
-	/*
-	Fecha fin
-	*/
-	var datefinal = new Date(fechafin);
-	var minutefinal = datefinal.getMinutes();
-	var hourfinal = datefinal.getHours();
-	var dayfinal = datefinal.getDate();
-	var monthfinal = datefinal.getMonth();
-	var yearfinal = datefinal.getFullYear();
-	resultado = hour + ":"+ minute + "-" + hourfinal + ":"+ minutefinal;	
-	return resultado;
+  var resultado ="";
+  var date = new Date(fechainicio);
+  var minute = date.getMinutes();
+  var hour = date.getHours();
+  var day = date.getDate();
+  var month = date.getMonth();
+  var year = date.getFullYear();
+  /*
+  Fecha fin
+  */
+  var datefinal = new Date(fechafin);
+  var minutefinal = datefinal.getMinutes();
+  var hourfinal = datefinal.getHours();
+  var dayfinal = datefinal.getDate();
+  var monthfinal = datefinal.getMonth();
+  var yearfinal = datefinal.getFullYear();
+  resultado = hour + ":"+ minute + "-" + hourfinal + ":"+ minutefinal;  
+  return resultado;
 }
 
 </script>
@@ -154,7 +167,7 @@ function convertirFechaNumeros(fechainicio, fechafin){
 <section>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          	
+            
 
 
         </div>
