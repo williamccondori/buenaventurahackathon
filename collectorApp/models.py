@@ -1,9 +1,8 @@
 from django.db import models
 from datetime import date,datetime
 # Create your models here.
-
 class operador(models.Model):
-    nombre_operador = models.CharField(max_length=100,null=False)
+    nombre_operador = models.CharField(max_length=12,null=False)
     usuario = models.CharField(max_length=12,null=False)
     password = models.CharField(max_length=12,null=False)
     tipo_operador = models.IntegerField(null=False)
@@ -34,8 +33,8 @@ class actividad(models.Model):
 class detalle_actividad(models.Model):
     id_actividad = models.ForeignKey(actividad,on_delete=models.CASCADE, related_name="actividad_detalle_actividad")
     actividad=models.CharField(max_length=20, null=False)
-    hora_inicio=models.DateField(blank=True, default=datetime.now)
-    hora_fin = models.DateField(blank=True, default=datetime.now)
+    hora_inicio=models.DateTimeField(blank=True, auto_now_add=True)
+    hora_fin = models.DateTimeField(blank=True, auto_now_add=True)
     codigo_operacion=models.CharField(max_length=20, null=False)
     descripcion_operacion=models.CharField(max_length=20, null=False)
     labor_origen=models.CharField(max_length=20, null=False)
@@ -54,9 +53,7 @@ class detalle_actividad(models.Model):
     hr_diesel_final=models.CharField(max_length=20, null=False)
     hr_electricidad_inicial_s=models.CharField(max_length=20, null=False)
     hr_electricidad_final_s=models.CharField(max_length=20, null=False)
-    def __str__(self):
-        return(self.id_actividad+" "+self.actividad+" "+self.hora_inicio+" "+self.hora_fin+""+self.codigo_operacion+""+self.descripcion_operacion+""+self.labor_origen+""+self.labor_destino+""+self.obervaciones+""+self.tipo_material+""+self.labor_s+""+self.proyecto_s+""+self.fila_s+""+self.num_taladro_s+""+self.longitud_s+""+self.inclinacion_s+""+self.num_broca_s+""+self.hr_diesel_inicial+""+self.hr_diesel_final+""+self.hr_electricidad_inicial_s+""+self.hr_electricidad_final_s)
-
+    
 class simba(models.Model):
     id_detalle_actividad=models.ForeignKey(detalle_actividad,on_delete=models.CASCADE,related_name="simba_detalle_actividad")
     percusion=models.CharField(max_length=20, null=False)
